@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# Effective command reconstructed from saved training_config.json; run at repository root.
+set -euo pipefail
+PYTHONPATH=src python -m eegproc_xai_cfo.deep_learning.joint_architectures.SICModelv11.sic_model_train \
+  --dataset dreamer \
+  --n-channels 14 \
+  --n-bands 3 \
+  --classification-level trial \
+  --training-protocol loso_validation \
+  --source-epochs 3 \
+  --source-batch-size 64 \
+  --validation-subjects 0 \
+  --validation-seed 42 \
+  --early-stopping-min-delta 0.001 \
+  --early-stopping-monitor val_loss \
+  --early-stopping-mode auto \
+  --selection-metric balanced_accuracy \
+  --hyperparameter-selection-level losocv \
+  --calibration-epochs 20 \
+  --calibration-batch-size 64 \
+  --calibration-trials 6 \
+  --calibration-folds 3 \
+  --calibration-selection-shots 12 \
+  --calibration-learning-rate 0.0001 \
+  --calibration-optimizer adamw \
+  --calibration-weight-decay 5e-05 \
+  --calibration-seed 42 \
+  --decision-threshold 0.5 \
+  --ece-bins 15 \
+  --prediction-diagnostics \
+  --prediction-diagnostics-metric balanced_accuracy \
+  --prediction-diagnostics-every-n-epochs 1 \
+  --prediction-diagnostics-max-samples 10000 \
+  --prediction-diagnostics-threshold-tolerance 0.01 \
+  --prediction-diagnostics-seed 42 \
+  --n-jobs 4 \
+  --gpu-ids 0 1 2 3 \
+  --cpus-per-worker 2 \
+  --verbose 2 \
+  --seed 42 \
+  --label-threshold-mode global \
+  --median-label 3.0 \
+  --window-normalization global_rms \
+  --raw-eeg-npy datasets/dreamer_eeg.npy \
+  --raw-labels-npy datasets/dreamer_labels.npy \
+  --label-dimension valence \
+  --window-sec 1 \
+  --window-overlap 0 \
+  --fs 128 \
+  --training-method mldg \
+  --no-early-stopping \
+  --no-restore-best-weights \
+  --calibration-level 3 6 \
+  --calibration-level 6 3 \
+  --calibration-level 9 2 \
+  --calibration-level 12 3 \
+  --hyperparameters-json "$(cat reproducibility/valence/hyperparameters.json)" \
+  --out-dir runs/reproduction/valence --run-name reproduced_valence "$@"

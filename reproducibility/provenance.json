@@ -1,0 +1,52 @@
+{
+  "scope": "Effective settings reconstructed from saved records, not original shell history. No training or optimization rerun.",
+  "tasks": {
+    "arousal": {
+      "training_run": "runs/full/sic_v15_arousal_scale64/DREAMER/arousal/suite_1599318/all_subjects/full_run_v15_arousal_scale64_20260918_155429",
+      "configuration_id": 1,
+      "model_version": "v15",
+      "summary_sha256": "61285bba7664d297ca6038c8785be3f8505f7b7d64ee22492098f5aecd680241",
+      "training_config_sha256": "711762d90c2c8dc8ae969e68d2d0b09843a5a57226d4f158920e22c412612071",
+      "summary_matches_user_attachment": true,
+      "configurations_in_summary": 1,
+      "selection_level": "losocv",
+      "selection_metric": "balanced_accuracy",
+      "selection_score": 0.5606704853827617,
+      "upstream_selection_provenance": "unverified",
+      "source_epochs": 10,
+      "episodes_per_epoch": 12,
+      "calibration_epochs": 1,
+      "counterfactual_run": "runs/counterfactuals/arousal_suite_1599318_ablations_2355492",
+      "counterfactual_subjects": 23,
+      "target_probability": 0.8,
+      "counterfactual_checkpoint_hashes_verified": 23
+    },
+    "valence": {
+      "training_run": "runs/full/sic_trial_bigru_v11_mldg_brier_ablation/DREAMER/valence/suite_65452590/full/dreamer_valence_sic_trial_bigru_v11_mldg_full_full_20260827_213158",
+      "configuration_id": 1,
+      "model_version": "v11",
+      "summary_sha256": "b2df80557b5eb375e17c499fba536cd63e53fe63693f8743a15df90ee2dcac0a",
+      "training_config_sha256": "f163f9855152abdffdb7cae85f41664602130e1cca14c593fda94bb984dbc057",
+      "summary_matches_user_attachment": true,
+      "configurations_in_summary": 1,
+      "selection_level": "calibration",
+      "selection_metric": "brier_score",
+      "selection_score": 0.24907571198509296,
+      "upstream_selection_provenance": "unverified",
+      "source_epochs": 3,
+      "episodes_per_epoch": 20,
+      "calibration_epochs": 20,
+      "counterfactual_run": "runs/counterfactuals/valence_suite_65452590_ablations_2356028",
+      "counterfactual_subjects": 23,
+      "target_probability": 0.5,
+      "counterfactual_checkpoint_hashes_verified": 23
+    }
+  },
+  "metric_audit": {
+    "archived_report": "runs/counterfactuals/final-XAI-CFO-report",
+    "endpoints_checked": 596,
+    "delta_dec": "Every archived trial value equals sqrt(decoded_change_mse).",
+    "e_rec": "Computed by typicality.results as sqrt(original_reconstruction_mse); final paired table does not contain e_rec.",
+    "paper_numbers_edited": false
+  }
+}
